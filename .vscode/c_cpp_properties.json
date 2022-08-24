@@ -1,0 +1,62 @@
+//
+// !!! WARNING !!! AUTO-GENERATED FILE!
+// PLEASE DO NOT MODIFY IT AND USE "platformio.ini":
+// https://docs.platformio.org/page/projectconf/section_env_build.html#build-flags
+//
+{
+    "configurations": [
+        {
+            "name": "PlatformIO",
+            "includePath": [
+                "c:/Users/jwi/Desktop/RobotArm/include",
+                "c:/Users/jwi/Desktop/RobotArm/src",
+                "c:/Users/jwi/Desktop/RobotArm/.pio/libdeps/sanguino_atmega1284p/Bounce2/src",
+                "c:/Users/jwi/Desktop/RobotArm/.pio/libdeps/sanguino_atmega1284p/SpeedyStepper/src",
+                "c:/Users/jwi/Desktop/RobotArm/.pio/libdeps/sanguino_atmega1284p/AccelStepper/src",
+                "C:/Users/jwi/.platformio/packages/framework-arduino-avr/cores/arduino",
+                "C:/Users/jwi/.platformio/packages/framework-arduino-avr/variants/sanguino",
+                "C:/Users/jwi/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
+                "C:/Users/jwi/.platformio/packages/framework-arduino-avr/libraries/HID/src",
+                "C:/Users/jwi/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
+                "C:/Users/jwi/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
+                "C:/Users/jwi/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
+                ""
+            ],
+            "browse": {
+                "limitSymbolsToIncludedHeaders": true,
+                "path": [
+                    "c:/Users/jwi/Desktop/RobotArm/include",
+                    "c:/Users/jwi/Desktop/RobotArm/src",
+                    "c:/Users/jwi/Desktop/RobotArm/.pio/libdeps/sanguino_atmega1284p/Bounce2/src",
+                    "c:/Users/jwi/Desktop/RobotArm/.pio/libdeps/sanguino_atmega1284p/SpeedyStepper/src",
+                    "c:/Users/jwi/Desktop/RobotArm/.pio/libdeps/sanguino_atmega1284p/AccelStepper/src",
+                    "C:/Users/jwi/.platformio/packages/framework-arduino-avr/cores/arduino",
+                    "C:/Users/jwi/.platformio/packages/framework-arduino-avr/variants/sanguino",
+                    "C:/Users/jwi/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
+                    "C:/Users/jwi/.platformio/packages/framework-arduino-avr/libraries/HID/src",
+                    "C:/Users/jwi/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
+                    "C:/Users/jwi/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
+                    "C:/Users/jwi/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
+                    ""
+                ]
+            },
+            "defines": [
+                "PLATFORMIO=60101",
+                "ARDUINO_AVR_SANGUINO",
+                "F_CPU=16000000L",
+                "ARDUINO_ARCH_AVR",
+                "ARDUINO=10808",
+                "__AVR_ATmega1284P__",
+                ""
+            ],
+            "cStandard": "c11",
+            "cppStandard": "c++11",
+            "compilerPath": "C:/Users/jwi/.platformio/packages/toolchain-atmelavr/bin/avr-gcc.exe",
+            "compilerArgs": [
+                "-mmcu=atmega1284p",
+                ""
+            ]
+        }
+    ],
+    "version": 4
+}
