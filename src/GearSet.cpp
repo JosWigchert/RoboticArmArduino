@@ -45,7 +45,7 @@ double GearSet::getGearRatio()
     return (double)drivenGear / (double)driveGear;
 }
 
-int  GearSet::calculateSteps(int steps)
+uint32_t  GearSet::calculateSteps(uint32_t steps)
 {
-    return (int)(steps * getGearRatio());
+    return steps * getGearRatio();
 }

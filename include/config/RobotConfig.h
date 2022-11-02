@@ -8,8 +8,8 @@ struct JointConfig
     uint8_t     dirPin;
     uint8_t  enablePin;
     float       length;
-    float        speed;
-    float acceleration;
+    float        maxSpeed;
+    float maxAcceleration;
     bool directionInverted = false;
     bool      stepInverted = false;
     bool    enableInverted = false;

@@ -14,43 +14,45 @@ ConstrainedGearedStepper::~ConstrainedGearedStepper()
 {
 }
 
-void ConstrainedGearedStepper::setLimit(float upper, float lower)
+void ConstrainedGearedStepper::setLimit(double upper, double lower)
 {
     upperLimit = upper;
     lowerLimit = lower;
 }
 
-void ConstrainedGearedStepper::setUpperLimit(float upper)
+void ConstrainedGearedStepper::setUpperLimit(double upper)
 {
     upperLimit = upper;
 }
 
-void ConstrainedGearedStepper::setLowerLimit(float lower)
+void ConstrainedGearedStepper::setLowerLimit(double lower)
 {
     lowerLimit = lower;
 }
 
-float ConstrainedGearedStepper::getUpperLimit() const
+double ConstrainedGearedStepper::getUpperLimit() const
 {
     return upperLimit;
 }
 
-float ConstrainedGearedStepper::getLowerLimit() const
+double ConstrainedGearedStepper::getLowerLimit() const
 {
     return lowerLimit;
 }
 
-void ConstrainedGearedStepper::rotate(float angle, AngleType type)
+void ConstrainedGearedStepper::rotate(double angle, AngleType type)
 {
-    float fullCircle = (type == Degrees) ? 360 : 2 * PI;
-    int stepsFullCircle = gearSet->calculateSteps(STEPS_PER_REV * microStep);
+    double fullCircle = (type == Degrees) ? 360 : 2 * PI;
+    uint32_t stepsFullCircle = gearSet->calculateSteps(STEPS_PER_REV * microStep);
 
     long currentPosition = this->currentPosition();
-    float currentAngle = currentPosition == 0 ? 0 : ((float)currentPosition / (float)stepsFullCircle) * fullCircle;
-    float toRotateAngle = currentAngle + angle;
-    
-    float constrainedAngle = max(min(toRotateAngle, upperLimit), lowerLimit);
-    float rotateAngle = constrainedAngle - currentAngle;
-    int steps = gearSet->calculateSteps(((STEPS_PER_REV * microStep) * (rotateAngle / fullCircle)));
+
+    double currentAngle = currentPosition == 0 ? 0 : ((double)currentPosition / (double)stepsFullCircle) * fullCircle;
+    double toRotateAngle = currentAngle + angle;
+
+    double constrainedAngle = max(min(toRotateAngle, upperLimit), lowerLimit);
+    double rotateAngle = constrainedAngle - currentAngle;
+
+    uint32_t steps = round(gearSet->calculateSteps((STEPS_PER_REV * microStep)) * (rotateAngle / fullCircle));
     move(steps);
 }

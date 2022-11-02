@@ -13,7 +13,7 @@ public:
     void setGearRatio(uint32_t driveTeeth, uint32_t drivenTeeth);
 
     double getGearRatio();
-    int calculateSteps(int steps);
+    uint32_t calculateSteps(uint32_t steps);
 
 private:
     uint32_t driveGear = 0;
