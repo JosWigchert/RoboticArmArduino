@@ -17,11 +17,14 @@ public:
 
     void setGearRatio(uint32_t driveTeeth, uint32_t drivenTeeth);
 
-    void moveGeared(long steps);
-    void moveToGeared(long steps);
+    uint32_t getStepsToMove(double angle, AngleType type = Degrees);
 
-    virtual void rotate(float angle, AngleType type = Degrees);
-    virtual void rotateTo(float angle, AngleType type = Degrees);
+    void moveGeared(uint32_t steps);
+    void moveToGeared(uint32_t steps);
+
+    virtual void rotate(double angle, AngleType type = Degrees);
+    virtual void rotateTo(double angle, AngleType type = Degrees);
+    virtual double getCurrentRotation(AngleType type = Degrees);
 
     virtual void calibrate() override;
 

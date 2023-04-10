@@ -5,17 +5,17 @@
 class ConstrainedGearedStepper : public GearedStepper
 {
 public:
-    void setLimit(float upper, float lower);
-    void setUpperLimit(float upper);
-    void setLowerLimit(float lower);
+    void setLimit(double upper, double lower);
+    void setUpperLimit(double upper);
+    void setLowerLimit(double lower);
 
-    float getUpperLimit() const;
-    float getLowerLimit() const;
+    double getUpperLimit() const;
+    double getLowerLimit() const;
 
-    virtual void rotate(float angle, AngleType type = Degrees) override;
+    virtual void rotate(double angle, AngleType type = Degrees) override;
 protected:
-    float upperLimit;
-    float lowerLimit;
+    double upperLimit;
+    double lowerLimit;
 public:
     ConstrainedGearedStepper(uint8_t interface = AccelStepper::FULL4WIRE, uint8_t pin1 = 2, uint8_t pin2 = 3, uint8_t pin3 = 4, uint8_t pin4 = 5, bool enable = true);
     ConstrainedGearedStepper(void (*forward)(), void (*backward)());

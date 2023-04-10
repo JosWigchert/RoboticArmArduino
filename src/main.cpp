@@ -24,10 +24,17 @@
 RobotConfig robotConfig;
 Robot *robot;
 
+
+FILE f_out;
+int sput(char c, __attribute__((unused)) FILE* f) {return !Serial.write(c);}
+
 void setup()
 {
     Serial.begin(115200);
     Serial.setTimeout(10);
+
+    fdev_setup_stream(&f_out, sput, nullptr, _FDEV_SETUP_WRITE); // cf https://www.nongnu.org/avr-libc/user-manual/group__avr__stdio.html#gaf41f158c022cbb6203ccd87d27301226
+    stdout = &f_out;
 
     Serial.println("Starting robot...");
 
@@ -37,8 +44,8 @@ void setup()
     robotConfig.base.dirPin = BASE_DIR_PIN;
     robotConfig.base.enablePin = BASE_ENABLE_PIN;
     robotConfig.base.length = BASE_HEIGHT;
-    robotConfig.base.speed = 8000.0f;
-    robotConfig.base.acceleration = 2000.0f;
+    robotConfig.base.maxSpeed = 8000.0f;
+    robotConfig.base.maxAcceleration = 3000.0f;
     robotConfig.base.enableInverted = true;
 
     robotConfig.lowerArm.stepPin = LOWER_ARM_STEP_PIN;
@@ -47,9 +54,10 @@ void setup()
     robotConfig.lowerArm.length = LOWER_ARM_LENGTH;
     robotConfig.lowerArm.lowerAngleLimit = LOWER_ARM_LOWER_ANGLE_LIMIT;
     robotConfig.lowerArm.upperAngleLimit = LOWER_ARM_UPPER_ANGLE_LIMIT;
-    robotConfig.lowerArm.speed = 4000.0f;
-    robotConfig.lowerArm.acceleration = 1000.0f;
+    robotConfig.lowerArm.maxSpeed = 8000.0f;
+    robotConfig.lowerArm.maxAcceleration = 2000.0f;
     robotConfig.lowerArm.enableInverted = true;
+    robotConfig.upperArm.directionInverted = true;
 
     robotConfig.upperArm.stepPin = UPPER_ARM_STEP_PIN;
     robotConfig.upperArm.dirPin = UPPER_ARM_DIR_PIN;
@@ -57,8 +65,8 @@ void setup()
     robotConfig.upperArm.length = UPPER_ARM_LENGTH;
     robotConfig.upperArm.lowerAngleLimit = UPPER_ARM_LOWER_ANGLE_LIMIT;
     robotConfig.upperArm.upperAngleLimit = UPPER_ARM_UPPER_ANGLE_LIMIT;
-    robotConfig.upperArm.speed = 3000.0f;
-    robotConfig.upperArm.acceleration = 1000.0f;
+    robotConfig.upperArm.maxSpeed = 3000.0f;
+    robotConfig.upperArm.maxAcceleration = 2000.0f;
     robotConfig.upperArm.enableInverted = true;
     robotConfig.upperArm.directionInverted = true;
 
@@ -89,6 +97,11 @@ void handleInput(String command)
     {
         Serial.println("Disable Motors"); 
         robot->disable();
+    }
+    else if (split[0].charAt(0) == 'c')
+    {
+        Serial.println("Calibrating Robot"); 
+        robot->reset();
     }
     else if (split[0] == "r")
     {
