@@ -1,6 +1,9 @@
 #include <Arduino.h>
 #include <Bounce2.h>
 
+// Define ANET or CREALIY for the correct pinout
+#define ANET
+
 #include "pins/pins.h"
 #include "Split.h"
 #include "ConstrainedGearedStepper.h"
